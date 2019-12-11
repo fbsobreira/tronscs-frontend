@@ -41,23 +41,18 @@ export function formatInput(inputValue, inputType) {
         } else {
             throw "Array is expected. Ex: [1,2,3]";
         }
-    }
-    else {
-        if (inputType.indexOf("bytes") > -1) {
-            let numByte = Number(inputType.substr(5));
-            try {
-                if (Array.isArray(JSON.parse(inputValue))) {
-                    return ArrayNumToBytes(JSON.parse(inputValue), numByte)
-                } else {
-                    throw "treat as string";
-                }
-            } catch (e) {
-                //if error treat like string
-                return StringToBytes(inputValue, numByte);
+    } else if (inputType.indexOf("bytes") > -1) {
+        let numByte = Number(inputType.substr(5));
+        try {
+            if (Array.isArray(JSON.parse(inputValue))) {
+                return ArrayNumToBytes(JSON.parse(inputValue), numByte)
+            } else {
+                throw "treat as string";
             }
-        } 
-        else {
-           return inputValue;
+        } catch (e) {
+            //if error treat like string
+            return StringToBytes(inputValue, numByte);
         }
-    }
+    } 
+    return inputValue;    
 }

@@ -1,4 +1,7 @@
 export function StringToBytes(string,byteSize=32){
+    if (string.indexOf("0x") > -1){
+        return Buffer.from(string.replace("0x", ""), "hex");
+    }
     let inputByte32= new Uint8Array(byteSize)
     inputByte32.set((new TextEncoder()).encode(string))
     return inputByte32;
