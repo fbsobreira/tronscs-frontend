@@ -151,7 +151,7 @@ If you owned this contract, go to: https://tronsmartcontract.space/#/verify to v
       )).data;
       this.$alert("Warning!", "This contract source isn't ensure match bytecode on blockchain. This source code is for reference purpose!");
     } catch (e) {
-      this.$alert("Notice!", "Contract not verifed, no source code available");
+      //this.$alert("Notice!", "Contract not verifed, no source code available");
     }
   },
   computed: {
